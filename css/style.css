@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    /* Minimal fallback styles (used only if Tailwind isn't available) */
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
+    .btn { background: #4CAF50; color: white; padding: 8px 12px; border-radius: 6px; display: inline-block; text-decoration: none; }
+    .btn:hover { background: #45a049; }
+    .card { background: #fff; padding: 16px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .text-muted { color: #6b7280; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    th, td { border: 1px solid #e5e7eb; padding: 8px; text-align: left; }
+    .container { max-width: 1024px; margin: 0 auto; padding: 16px; }
+    .text-muted { color: #6b7280; }
+/* Minimal fallback styles (used only if Tailwind isn't available) */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.btn {
+    background: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    text-decoration: none;
+}
+.btn:hover { background: #45a049; }
+
+.text-muted { color: #6b7280; }
+
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+th, td { border: 1px solid #e5e7eb; padding: 8px; text-align: left; }
+
+/* Ensure form labels are visible as a safety fallback when Tailwind classes are missing/overridden */
+label {
+    display: block;
+    color: #111111;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+/* Robust fallback for form controls so inputs are visible even if Tailwind is unavailable */
+input,
+select,
+textarea,
+button {
+    color: #454545 !important;
+    background-color: #d1d1d1 !important;
+    border: 1px solid #3378de !important; /* gray-300 */
+    padding: 0.5rem !important;
+    border-radius: 0.375rem !important;
+    box-sizing: border-box !important;
+}
+
+/* Make sure placeholders are readable */
+::placeholder {
+    color: #4e4e4e !important; /* gray-400 */
+}
+
+/* small responsive helper */
+@media (max-width: 640px) {
+    .container { padding: 12px; }
+}
+
