@@ -11,40 +11,45 @@ $stmt = $pdo->query("SELECT * FROM rooms");
 $rooms = $stmt->fetchAll();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Handle delete action first (sent via JS-populated hidden field)
-    if (!empty($_POST['delete_id'])) {
-        $delId = (int)$_POST['delete_id'];
-        // Check for any reservations referencing this room
-        $stmt = $pdo->prepare("SELECT COUNT(*) FROM reservations WHERE room_id = ?");
-        $stmt->execute([$delId]);
-        $refCount = (int)$stmt->fetchColumn();
-        if ($refCount > 0) {
-            $error = 'Cannot delete room: there are ' . $refCount . ' reservation(s) referencing this room. Remove those first.';
-        } else {
-            $stmt = $pdo->prepare("DELETE FROM rooms WHERE id = ?");
+    // Require a valid CSRF token for any POST operation
+    if (!verify_csrf_token($_POST['csrf_token'] ?? '')) {
+        $error = 'Invalid CSRF token';
+    } else {
+        // Handle delete action first (sent via JS-populated hidden field)
+        if (!empty($_POST['delete_id'])) {
+            $delId = (int)$_POST['delete_id'];
+            // Check for any reservations referencing this room
+            $stmt = $pdo->prepare("SELECT COUNT(*) FROM reservations WHERE room_id = ?");
             $stmt->execute([$delId]);
-            $success = 'Room deleted';
-        }
-        // Refresh rooms
-        $stmt = $pdo->query("SELECT * FROM rooms");
-        $rooms = $stmt->fetchAll();
-    }
-
-    // Only run update logic when this is not a delete request and required fields are present
-    if (empty($_POST['delete_id'])) {
-        if (isset($_POST['id'], $_POST['room_number'], $_POST['type'], $_POST['price'], $_POST['status'])) {
-            $id = (int)$_POST['id'];
-            $room_number = $_POST['room_number'];
-            $type = $_POST['type'];
-            $price = $_POST['price'];
-            $status = $_POST['status'];
-
-            $stmt = $pdo->prepare("UPDATE rooms SET room_number = ?, type = ?, price = ?, status = ? WHERE id = ?");
-            $stmt->execute([$room_number, $type, $price, $status, $id]);
-            $success = 'Room updated';
+            $refCount = (int)$stmt->fetchColumn();
+            if ($refCount > 0) {
+                $error = 'Cannot delete room: there are ' . $refCount . ' reservation(s) referencing this room. Remove those first.';
+            } else {
+                $stmt = $pdo->prepare("DELETE FROM rooms WHERE id = ?");
+                $stmt->execute([$delId]);
+                $success = 'Room deleted';
+            }
             // Refresh rooms
             $stmt = $pdo->query("SELECT * FROM rooms");
             $rooms = $stmt->fetchAll();
+        }
+
+        // Only run update logic when this is not a delete request and required fields are present
+        if (empty($_POST['delete_id'])) {
+            if (isset($_POST['id'], $_POST['room_number'], $_POST['type'], $_POST['price'], $_POST['status'])) {
+                $id = (int)$_POST['id'];
+                $room_number = $_POST['room_number'];
+                $type = $_POST['type'];
+                $price = $_POST['price'];
+                $status = $_POST['status'];
+
+                $stmt = $pdo->prepare("UPDATE rooms SET room_number = ?, type = ?, price = ?, status = ? WHERE id = ?");
+                $stmt->execute([$room_number, $type, $price, $status, $id]);
+                $success = 'Room updated';
+                // Refresh rooms
+                $stmt = $pdo->query("SELECT * FROM rooms");
+                $rooms = $stmt->fetchAll();
+            }
         }
     }
 }
@@ -69,6 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php foreach ($rooms as $room): ?>
                 <tr>
                     <form method="POST" class="w-full flex items-center space-x-2">
+                        <?php echo csrf_field(); ?>
                         <td class="px-4 py-2"><?php echo $room['id']; ?><input type="hidden" name="id" value="<?php echo $room['id']; ?>"></td>
                         <td class="px-4 py-2"><input class="rounded-md border-gray-300" type="text" name="room_number" value="<?php echo htmlspecialchars($room['room_number']); ?>"></td>
                         <td class="px-4 py-2">
@@ -115,6 +121,12 @@ document.addEventListener('DOMContentLoaded', function(){
             inp.name = 'delete_id';
             inp.value = id;
             f.appendChild(inp);
+            // include CSRF token
+            var csrf = document.createElement('input');
+            csrf.type = 'hidden';
+            csrf.name = 'csrf_token';
+            csrf.value = '<?php echo htmlspecialchars(generate_csrf_token(), ENT_QUOTES, "UTF-8"); ?>';
+            f.appendChild(csrf);
             document.body.appendChild(f);
             f.submit();
         });

@@ -22,7 +22,7 @@ include 'header.php';
         <div class="bg-white p-6 rounded-lg shadow-sm">
             <div class="text-sm text-gray-500">Rooms</div>
             <div class="mt-2 text-2xl font-bold"><?php echo $total_rooms; ?></div>
-            <div class="text-sm text-gray-600 mt-1">Total rooms in inventory</div>
+            <div class="text-sm text-gray-600 mt-1">Total rooms</div>
         </div>
 
         <div class="bg-white p-6 rounded-lg shadow-sm">

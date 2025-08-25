@@ -2,20 +2,34 @@
 include 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // Hardcoded auth (demo only; use database and password_verify in production)
-    if ($username === 'admin' && $password === 'password') {
-        $_SESSION['user_role'] = 'manager';
-        header('Location: index.php');
-        exit;
-    } elseif ($username === 'staff' && $password === 'staffpass') {
-        $_SESSION['user_role'] = 'staff';
-        header('Location: index.php');
-        exit;
+    if (!verify_csrf_token($_POST['csrf_token'] ?? '')) {
+        $error = 'Invalid CSRF token';
     } else {
-        $error = 'Invalid credentials';
+        $username = $_POST['username'] ?? '';
+        $password = $_POST['password'] ?? '';
+
+    // Try database-backed auth if users table exists
+    try {
+        $stmt = $pdo->query("SHOW TABLES LIKE 'users'");
+        $exists = $stmt->rowCount() > 0;
+    } catch (Exception $e) {
+        $exists = false;
+    }
+
+    if ($exists) {
+        $stmt = $pdo->prepare('SELECT * FROM users WHERE username = ? LIMIT 1');
+        $stmt->execute([$username]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['user_role'] = $user['role'];
+            header('Location: index.php');
+            exit;
+        } else {
+            $error = 'Invalid credentials';
+        }
+    } else {
+        $error = "Authentication is not configured. Create the users table and insert users (see README).";
+    }
     }
 }
 ?>
@@ -26,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h1 class="text-2xl font-semibold mb-4 text-gray-800">Hidden Paradise Hotel</h1>
             <?php if (isset($error)) echo "<div class='mb-4 text-red-600'>".htmlspecialchars($error)."</div>"; ?>
             <form method="POST" class="space-y-4">
+                <?php echo csrf_field(); ?>
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Username</label>
                     <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500" type="text" name="username" required>

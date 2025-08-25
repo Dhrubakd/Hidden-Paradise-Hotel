@@ -1,0 +1,61 @@
+Scenario
+
+The “Hidden Paradise Hotel” is a new upcoming boutique hotel, located in a scenic location near Kathmandu. The management of the hotel has decided to implement a robust, secure hotel reservation system to use at the front desk. 
+Whenever a new guest arrives at the hotel, the front desk staff look into the system for availability and reserve rooms for the guests as per their request. All the information of the guest (including name, contact number, duration of stay etc) is entered during check in. One guest may book more than one room, but a room can be booked under only one person's name.
+The guest may request for additional services during their stay, including extra beds, food, airport pick up, sightseeing services etc. The total amount payable has to be calculated at the time of check out.
+The manager would require regular reports- weekly and monthly regarding occupancy and sales. Further he should be able to add/ edit rooms in the system. 
+Your task is to conduct a thorough software investigation and prepare a DBMS for the system.
+
+Task
+Activity 1: Designing the Database as per the scenario 
+Before you start the development process, you need to prepare a proposal document to be submitted to your manager. The document should contain:
+1. The design of the relational database system using appropriate design tools and techniques. It should contain at least four interrelated tables.
+2. Clear statements of user and system requirements. 
+You would prefer to produce a more detailed document, so you will produce a comprehensive design for a fully functional system which will include interface and output designs, data validations and cover data normalization.
+Your manager would like a separate report on your assessment of the effectiveness of the design in relation to user and system requirements.
+Activity 2: Development and testing of the database system
+Create and fully implement the database system showing evidence of user interface, output and data validations and querying across multiple tables using a query language. The system must also be fully secure and maintainable. 
+Include code snippets and screenshots of the system functionalities as evidence wherever required.
+For a higher grade: 
+You would want to include more than just the basics so you will implement a fully functional database system which will include system security and database maintenance features.
+Further provide a detailed assessment of whether meaningful data has been extracted through the use of query tools to produce appropriate management information. and an evaluation of the effectiveness of the database solution in relation to user and system requirements, and suggest improvements.
+
+Further, 
+Develop and action a test plan with effective tests that includes effective data, and extreme and erroneous data in order to build an accurate picture of the viability of the database 
+Tests must assess the breadth and usability of the programme as well as the requirements in the brief 
+Tests must include meaningful data and elements that would demonstrate a successful implementation
+Further Produce a written report:
+To assess the effectiveness of testing, including an explanation of the choice of the test data used. and evaluate the effectiveness of the database against user requirements and suggest improvements. 
+
+5) Produce a series of user videos and a detailed technical and user documentation:
+●	Technical: showing the backend of the system and its associated setup, including data flow diagrams and flowcharts, describing how the system works
+●	User: showcasing the system from a user perspective.
+
+For a higher grade, You would want to provide some graphical representations for ease of reference in the technical guide, so you need to produce technical and user documentation for a fully functional system, including diagrams showing movement of data through the system, and flowcharts describing how the system works.
+Lastly, Evaluate the effectiveness of the database solution in relation to user and system requirements, and suggest improvements.
+
+
+
+Pass	Merit	Distinction
+LO1 Use an appropriate design tool to design a relational database system for a substantial problem	
+LO1
+D1 Evaluate the effectiveness of the design in relation to user and system requirements.
+P1 Design a relational database system using appropriate design tools and techniques, containing at least four interrelated tables, with clear statements of user and system requirements.	
+M1 Produce a comprehensive design for a fully-functional system, which includes interface and output designs, data validations and data normalisation	
+LO2 Develop a fully-functional relational database system, based on an existing system design	
+
+LO2 & LO3
+D2 Evaluate the effectiveness of the database solution in relation to user and system requirements and suggest improvements.
+
+
+P2 Develop the database system with evidence of user interface, output and data validations, and querying across multiple tables. 
+P3 Implement a query language into the relational database system.	M2 Implement a fully functional database system, which includes system security and database maintenance. 
+M3 Assess whether meaningful data has been extracted through the use of query tools to produce appropriate management information.	
+LO3 Test the system against user and system requirements	
+P4 Test the system against user and system requirements.
+	M4 Assess the effectiveness of the testing, including an explanation of the choice of test data used.	
+LO4 Produce technical and user documentation	
+LO4
+
+D3 Evaluate the database in terms of improvements needed to ensure the continued effectiveness of the system
+P5 Produce technical and user documentation.	M5 Produce technical and user documentation for a fully-functional system, including data flow diagrams and flowcharts, describing how the system works.	

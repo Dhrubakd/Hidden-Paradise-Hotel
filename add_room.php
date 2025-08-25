@@ -7,13 +7,17 @@ if (!isManager()) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $room_number = $_POST['room_number'];
+    if (!verify_csrf_token($_POST['csrf_token'] ?? '')) {
+        $error = 'Invalid CSRF token';
+    } else {
+        $room_number = $_POST['room_number'];
     $type = $_POST['type'];
     $price = $_POST['price'];
 
     $stmt = $pdo->prepare("INSERT INTO rooms (room_number, type, price) VALUES (?, ?, ?)");
     $stmt->execute([$room_number, $type, $price]);
     $success = 'Room added';
+    }
 }
 ?>
 <?php $pageTitle = 'Add Room'; include 'header.php'; ?>
@@ -22,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h1 class="text-2xl font-semibold mb-4">Add Room</h1>
         <?php if (isset($success)) echo "<div class='mb-4 text-green-600'>".htmlspecialchars($success)."</div>"; ?>
         <form method="POST" class="space-y-4">
+            <?php echo csrf_field(); ?>
             <div>
                 <label class="block text-sm font-medium text-gray-700">Room Number</label>
                 <input class="mt-1 block w-full rounded-md border-gray-300" type="text" name="room_number" required>

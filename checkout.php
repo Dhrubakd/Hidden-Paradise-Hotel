@@ -12,6 +12,12 @@ $stmt = $pdo->query("SELECT r.id, g.name, ro.room_number, r.check_in_date, r.che
 $reservations = $stmt->fetchAll();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // CSRF
+    if (!verify_csrf_token($_POST['csrf_token'] ?? '')) {
+        header('Location: checkout.php?error=' . urlencode('Invalid CSRF token'));
+        exit;
+    }
+
     $res_id = (int)($_POST['res_id'] ?? 0);
 
     if ($res_id <= 0) {
@@ -94,6 +100,7 @@ $error = isset($_GET['error']) ? $_GET['error'] : null;
     <?php if (!empty($success)) echo "<div class='mb-4 text-green-600'>".htmlspecialchars($success)."</div>"; ?>
 
         <form method="POST">
+            <?php echo csrf_field(); ?>
             <div>
                 <label class="block text-sm font-medium text-gray-700">Select Reservation</label>
                 <select class="mt-1 block w-full rounded-md border-gray-300" name="res_id" required>

@@ -11,6 +11,10 @@ $stmt = $pdo->query("SELECT * FROM services");
 $services = $stmt->fetchAll();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // CSRF check
+    if (!verify_csrf_token($_POST['csrf_token'] ?? '')) {
+        $error = 'Invalid CSRF token';
+    } else {
     $name = $_POST['name'];
     $contact = $_POST['contact'];
     $room_id = $_POST['room_id'];
@@ -42,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
             $error = sprintf("Room not available for these dates. Existing booking: %s from %s to %s.", htmlspecialchars($guestName), $conflict['check_in_date'], $conflict['check_out_date']);
         } else {
-            // Insert guest
+        // Insert guest
             $stmt = $pdo->prepare("INSERT INTO guests (name, contact) VALUES (?, ?)");
             $stmt->execute([$name, $contact]);
             $guest_id = $pdo->lastInsertId();
@@ -64,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $success = 'Reservation successful';
         }
+        }
     }
 }
 ?>
@@ -74,6 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php if (isset($success)) echo "<div class='mb-4 text-green-600'>".htmlspecialchars($success)."</div>"; ?>
 
         <form method="POST" class="space-y-4">
+            <?php echo csrf_field(); ?>
             <div>
                 <label class="block text-sm font-medium text-gray-700">Name</label>
                 <input class="mt-1 block w-full rounded-md border-gray-300" type="text" name="name" required>
