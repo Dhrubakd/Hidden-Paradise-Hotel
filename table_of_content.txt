@@ -1,0 +1,266 @@
+Table of Contents
+
+1. Introduction
+1.1 Background and Purpose
+1.2 Objectives of the Assignment
+1.3 Overview of the Hidden Paradise Hotel Reservation System
+1.4 Structure of the Report
+Purpose: Introduce the project, aligning with the scenario (P1, M1, D1). Explain the need for a secure, robust system for hotel operations.
+
+
+2. Activity 1: Database Design (LO1, P1, M1, D1)
+2.1 System and User Requirements
+    2.1.1 User Requirements
+     - Front Desk Staff: Check-in, check-out, room availability, guest data entry
+     - Manager: Room management, weekly/monthly reports
+    2.1.2 System Requirements
+     - Functional: Real-time availability, multi-table queries, secure transactions
+     - Non-Functional: Scalability, security, maintainability
+    Criteria: P1 (clear statements of requirements); M1 (comprehensive design); D1 (evaluate effectiveness).
+
+2.2 Relational Database Design
+    2.2.1 Entity-Relationship Diagram (ERD)
+     - Entities: Guests, Rooms, Reservations, Services, Payments, Reservation_Services
+     - Relationships: One-to-Many, Many-to-Many
+    2.2.2 Data Dictionary
+     - Table structures, attributes, data types, constraints
+    2.2.3 Normalization Process
+     - 1NF, 2NF, 3NF steps to eliminate redundancy
+    Criteria: P1 (design with four interrelated tables); M1 (data normalization).
+
+2.3 Interface and Output Designs
+    2.3.1 User Interface Sketches
+     - Wireframes for login, check-in, check-out, room management, reports
+    2.3.2 Output Designs
+     - Report formats (weekly/monthly occupancy, sales)
+     - Success/error messages
+    Criteria: M1 (comprehensive interface/output designs).
+
+2.4 Data Validations
+    2.4.1 Client-Side Validations (JavaScript)
+     - Date checks, required fields
+    2.4.2 Server-Side Validations (PHP)
+     - Room availability, duplicate submissions, CSRF protection
+    Criteria: M1 (data validations).
+
+2.5 Evaluation of Design Effectiveness
+    2.5.1 Alignment with User Requirements
+     - How design supports front desk and manager tasks
+    2.5.2 Alignment with System Requirements
+     - Security, scalability, maintainability
+    2.5.3 Suggested Improvements
+     - Mobile app integration, advanced reporting
+    Criteria: D1 (evaluate design effectiveness, suggest improvements).
+
+3. Activity 2: Development and Testing (LO2, LO3, P2–P4, M2–M4, D2)
+3.1 System Development
+    3.1.1 Technology Stack
+     - Backend: MySQL
+     - Frontend: HTML/CSS/JavaScript
+     - Server-Side: PHP
+    3.1.2 Database Implementation
+     - SQL scripts for tables, relationships, sample data
+    3.1.3 User Interface Implementation
+     - Pages: Login, dashboard, check-in, check-out, add/edit rooms, reports
+    3.1.4 Query Implementation
+     - SQL queries for availability, reports, multi-table joins
+    3.1.5 Data Validations
+     - Client-side (e.g., date checks), server-side (e.g., CSRF tokens)
+    Criteria: P2 (develop system with UI, output, validations); P3 (query language); M2 (fully functional system).
+
+3.2 Security Features
+    3.2.1 Authentication
+    Table of Contents
+
+    1. Introduction
+    1.1 Background and Purpose
+    1.2 Objectives of the Assignment
+    1.3 Overview of the Hidden Paradise Hotel Reservation System
+    1.4 Structure of the Report
+    Purpose: Introduce the project, aligning with the scenario (P1, M1, D1). Explain the need for a secure, robust system for hotel operations.
+
+
+    2. Activity 1: Database Design (LO1, P1, M1, D1)
+    2.1 System and User Requirements
+        2.1.1 User Requirements
+         - Front Desk Staff: Check-in, check-out, room availability, guest data entry
+         - Manager: Room management, weekly/monthly reports
+        2.1.2 System Requirements
+         - Functional: Real-time availability, multi-table queries, secure transactions
+         - Non-Functional: Scalability, security, maintainability
+        Criteria: P1 (clear statements of requirements); M1 (comprehensive design); D1 (evaluate effectiveness).
+
+    2.2 Relational Database Design
+        2.2.1 Entity-Relationship Diagram (ERD)
+         - Entities: Guests, Rooms, Reservations, Services, Payments, Reservation_Services
+         - Relationships: One-to-Many, Many-to-Many
+        2.2.2 Data Dictionary
+         - Table structures, attributes, data types, constraints
+        2.2.3 Normalization Process
+         - 1NF, 2NF, 3NF steps to eliminate redundancy
+        Criteria: P1 (design with four interrelated tables); M1 (data normalization).
+
+    2.3 Interface and Output Designs
+        2.3.1 User Interface Sketches
+         - Wireframes for login, check-in, check-out, room management, reports
+        2.3.2 Output Designs
+         - Report formats (weekly/monthly occupancy, sales)
+         - Success/error messages
+        Criteria: M1 (comprehensive interface/output designs).
+
+    2.4 Data Validations
+        2.4.1 Client-Side Validations (JavaScript)
+         - Date checks, required fields
+        2.4.2 Server-Side Validations (PHP)
+         - Room availability, duplicate submissions, CSRF protection
+        Criteria: M1 (data validations).
+
+    2.5 Evaluation of Design Effectiveness
+        2.5.1 Alignment with User Requirements
+         - How design supports front desk and manager tasks
+        2.5.2 Alignment with System Requirements
+         - Security, scalability, maintainability
+        2.5.3 Suggested Improvements
+         - Mobile app integration, advanced reporting
+        Criteria: D1 (evaluate design effectiveness, suggest improvements).
+
+    3. Activity 2: Development and Testing (LO2, LO3, P2–P4, M2–M4, D2)
+    3.1 System Development
+        3.1.1 Technology Stack
+         - Backend: MySQL
+         - Frontend: HTML/CSS/JavaScript
+         - Server-Side: PHP
+        3.1.2 Database Implementation
+         - SQL scripts for tables, relationships, sample data
+        3.1.3 User Interface Implementation
+         - Pages: Login, dashboard, check-in, check-out, add/edit rooms, reports
+        3.1.4 Query Implementation
+         - SQL queries for availability, reports, multi-table joins
+        3.1.5 Data Validations
+         - Client-side (e.g., date checks), server-side (e.g., CSRF tokens)
+        Criteria: P2 (develop system with UI, output, validations); P3 (query language); M2 (fully functional system).
+
+    3.2 Security Features
+        3.2.1 Authentication
+         - Session-based login for staff/manager
+        3.2.2 CSRF Protection
+         - Token-based prevention of unauthorized requests
+        3.2.3 SQL Injection Prevention
+         - Use of prepared statements
+        Criteria: M2 (system security).
+
+    3.3 Maintenance Features
+        3.3.1 Room Status Updates
+         - Automatic updates during check-in/check-out
+        3.3.2 Data Backup Considerations
+         - Proposed SQL dump scripts
+        Criteria: M2 (database maintenance).
+
+    3.4 Querying for Management Information
+        3.4.1 Weekly Occupancy Reports
+         - SQL query for % rooms booked
+        3.4.2 Monthly Sales Reports
+         - SQL query for total payments
+        3.4.3 Assessment of Data Extraction
+         - Effectiveness for managerial decision-making
+        Criteria: M3 (assess meaningful data extraction).
+
+    3.5 Testing the System
+        3.5.1 Test Plan
+         - Test cases for normal, extreme, erroneous data
+        3.5.2 Test Execution
+         - Check-in, check-out, room management, reports
+        3.5.3 Test Results
+         - Screenshots, pass/fail outcomes
+        3.5.4 Choice of Test Data
+         - Explanation of normal (valid bookings), extreme (max services), erroneous (invalid dates)
+        Criteria: P4 (test against requirements); M4 (assess testing effectiveness, explain test data).
+
+    3.6 Evaluation of Database Solution
+        3.6.1 Effectiveness Against Requirements
+         - User needs (front desk, manager tasks)
+         - System needs (security, performance)
+        3.6.2 Suggested Improvements
+         - Retain payment records, add audit trail, user management
+        Criteria: D2 (evaluate solution, suggest improvements).
+
+    4. Documentation (LO4, P5, M5, D3)
+    4.1 Technical Documentation
+        4.1.1 System Setup
+         - Installation guide (XAMPP, MySQL, file structure)
+        4.1.2 Data Flow Diagrams (DFD)
+         - Level 0 and Level 1 DFDs for data movement
+        4.1.3 Flowcharts
+         - Check-in, check-out, room management processes
+        4.1.4 Backend Overview
+         - Database schema, PHP logic, SQL queries
+        Criteria: P5 (technical documentation); M5 (diagrams, flowcharts).
+
+    4.2 User Documentation
+        4.2.1 User Guide for Staff
+         - How to log in, check-in guests, check-out guests
+        4.2.2 User Guide for Managers
+         - Add/edit rooms, view reports
+        4.2.3 User Videos
+         - Links to demo videos (e.g., YouTube unlisted links)
+        Criteria: P5 (user documentation); M5 (comprehensive with diagrams).
+
+    4.3 Evaluation of Database Effectiveness
+        4.3.1 Current Effectiveness
+         - Meeting user/system requirements
+        4.3.2 Suggested Improvements
+         - Cloud migration, automated backups, enhanced security
+        Criteria: D3 (evaluate for continued effectiveness, suggest improvements).
+
+
+    5. Conclusion
+    5.1 Summary of Achievements
+    5.2 Reflection on Learning Outcomes
+    5.3 Future Enhancements
+    Purpose: Summarize how the system meets all criteria and propose future work (e.g., mobile app, advanced analytics).
+
+
+    6. References
+    List of sources (e.g., books like "Database System Concepts," OWASP for security, MySQL documentation)
+    Harvard referencing style
+    Criteria: Required for all research-based sections (P1–P5, M1–M5, D1–D3).
+
+    7. Assessment mapping (explicit evidence required for grading)
+    7.1 How to read this mapping
+        - Each criterion (P/M/D) is listed with the exact artefact(s) that demonstrate it and the page/filename where evidence appears.
+    7.2 Example mapping entries
+        - P1: Requirements and ERD — docs/requirements.md, docs/ERD.png
+        - P2: Working UI — index.php, checkin.php, checkout.php, screenshots/login.png
+        - M2: Security implemented — db.php (CSRF helpers), login.php (password_hash), docs/security_audit.md
+        - D1/D2/D3: Evaluation and suggested improvements — docs/evaluation.md, docs/performance_report.md
+
+    8. Evidence / Submission index (files and artefacts to include)
+    8.1 Mandatory artefacts (attach these in submission)
+        - Source code: all PHP files in project root (index.php, login.php, add_room.php, edit_room.php, checkin.php, checkout.php, reports.php)
+        - Database: migrations/setup.sql and migrations/create_users.sql
+        - Data: data/sample_seed.sql (sample dataset)
+        - Diagrams: docs/ERD.png, docs/DFD-level0.png, docs/DFD-level1.png
+        - Tests: tests/test_plan.md, tests/integration_results.html (or screenshots)
+        - Security: docs/security_audit.md, docs/vulnerability_fix_list.md
+        - Demo: docs/demo_links.md (unlisted video links) and screenshots/
+
+    8.2 Optional but recommended artefacts
+        - CI config: .github/workflows/ci.yml and CI run log (or badge)
+        - Accessibility report: docs/accessibility_report.md
+        - Performance log: docs/performance_report.md
+        - Audit log sample: logs/audit_sample.log
+
+    9. Appendices
+    9.1 Data dictionary (CSV/markdown)
+    9.2 SQL query list and EXPLAIN outputs for heavy queries
+    9.3 Test cases (full table) and raw test output
+    9.4 Change log and release notes
+
+    10. Submission checklist (what to bundle)
+        - docs/ (ERD, DFDs, security audit, evaluation)
+        - migrations/ and data/ (schema + sample data)
+        - tests/ (plan + results)
+        - screenshots/ and docs/demo_links.md
+        - README.md and this table_of_content.txt
+
+    Notes: This TOC has been extended to explicitly map assessment criteria to evidence and to list exact filenames and artefacts examiners expect for Distinction-level submissions. Create the listed files (diagrams, test results, demo links, security audit) and reference them in the report to meet D-level evidence.
